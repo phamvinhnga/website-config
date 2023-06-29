@@ -10,7 +10,7 @@ services:
     ports:
       - 80:80
     volumes:
-        - website-volume:/var/lib/nginx
+        - website-config-volume:/var/lib/nginx
         - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
         - website-customer
@@ -24,7 +24,7 @@ services:
       networks:
         - website-network
       volumes:
-        - website-volume:/var/lib/mysql
+        - website-config-volume:/var/lib/mysql
         - ./_MySQL_Init_Script:/docker-entrypoint-initdb.d
       environment:
         - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -36,8 +36,8 @@ services:
         - 3306:3306
 
 volumes:
-    website-volume:
-        name: website-volume
+    website-config-volume:
+        name: website-config-volume
     
 networks:
     website-network:
