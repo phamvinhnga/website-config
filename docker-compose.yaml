@@ -40,6 +40,6 @@ volumes:
         name: website-config-volume
     
 networks:
-    website-network:
-        driver: bridge
-        name: website-network
+  website-network:
+    external: true
+    name: website-network
